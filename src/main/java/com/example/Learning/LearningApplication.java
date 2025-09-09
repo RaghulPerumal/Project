@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -32,7 +33,8 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("Inserting -> {}", repository.save(new Student("John", "A1234657")));
 
-        LOGGER.info("Update 10003 -> {}", repository.save(new Student(1L, "Name-Updated", "New-Passport")));
+        LOGGER.info("Update 10003 -> {}", repository.save(new Student(1L, "Victoria", "victoria.watson@example.com",
+                LocalDate.of(2000,1,1),"Linguistics",5.5)));
 
         repository.deleteById(2L);
 

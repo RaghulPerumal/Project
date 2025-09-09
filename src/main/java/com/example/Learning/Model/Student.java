@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity(name = "Student")
 @Data
 @Getter
@@ -15,9 +17,9 @@ import lombok.*;
 
 public class Student {
 
-    public Student(@NonNull String name, String passportNumber) {
+    public Student(@NonNull String name, String eMail) {
         this.name = name;
-        this.passportNumber = passportNumber;
+        this.eMail = eMail;
     }
 
     @Id
@@ -25,14 +27,20 @@ public class Student {
     private Long id;
     @NonNull
     private String name;
-    private String passportNumber;
+    private String eMail;
+    private LocalDate dateOfBirth;
+    private String major;
+    private Double cgpa;
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ", " +
-                "passportNumber = " + passportNumber + ", " +
-                "name = " + name + ")";
+                "major = " + major + ", " +
+                "name = " + name + ", " +
+                "eMail = " + eMail + ", " +
+                "dateOfBirth = " + dateOfBirth + ", " +
+                "cgpa = " + cgpa + ")";
     }
 }
 
