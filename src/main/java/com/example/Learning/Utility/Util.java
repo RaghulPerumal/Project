@@ -1,8 +1,6 @@
-package com.example.Learning.Util;
+package com.example.Learning.Utility;
 
 import org.springframework.stereotype.Component;
-
-import javax.naming.spi.ObjectFactory;
 
 @Component
 public class Util {

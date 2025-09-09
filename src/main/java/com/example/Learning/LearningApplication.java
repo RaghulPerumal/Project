@@ -23,7 +23,7 @@ public class LearningApplication implements CommandLineRunner {
     }
 
     @Autowired
-    StudentRepository repository;
+    private StudentRepository repository;
 
     @Override
     public void run(String... args) {
