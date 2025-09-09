@@ -32,9 +32,9 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("Inserting -> {}", repository.save(new Student("John", "A1234657")));
 
-        LOGGER.info("Update 10003 -> {}", repository.save(new Student(10001L, "Name-Updated", "New-Passport")));
+        LOGGER.info("Update 10003 -> {}", repository.save(new Student(1L, "Name-Updated", "New-Passport")));
 
-        repository.deleteById(10002L);
+        repository.deleteById(2L);
 
         LOGGER.info("All users -> {}", repository.findAll());
     }
