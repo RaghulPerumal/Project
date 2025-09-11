@@ -1,5 +1,7 @@
 package com.example.Learning;
 
+import com.example.Learning.Controller.StudentController;
+import com.example.Learning.Model.Major;
 import com.example.Learning.Model.Student;
 import com.example.Learning.Repo.StudentRepository;
 import org.slf4j.Logger;
@@ -26,6 +28,9 @@ public class LearningApplication implements CommandLineRunner {
     @Autowired
     private StudentRepository repository;
 
+    @Autowired
+    private StudentController studentController;
+
     @Override
     public void run(String... args) {
 
@@ -34,11 +39,15 @@ public class LearningApplication implements CommandLineRunner {
         LOGGER.info("Inserting -> {}", repository.save(new Student("John", "A1234657")));
 
         LOGGER.info("Update 10003 -> {}", repository.save(new Student(1L, "Victoria", "victoria.watson@example.com",
-                LocalDate.of(2000,1,1),"Linguistics",5.5)));
+                LocalDate.of(2000, 1, 1), new Major(3L, "new major", 4, "desc"), 5.5)));
 
         repository.deleteById(2L);
 
         LOGGER.info("All users -> {}", repository.findAll());
+
+        System.out.println(studentController.about());
+
+
     }
 
 //	@Bean

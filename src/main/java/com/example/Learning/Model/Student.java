@@ -1,17 +1,12 @@
 package com.example.Learning.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity(name = "Student")
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -29,19 +24,11 @@ public class Student {
     private String name;
     private String eMail;
     private LocalDate dateOfBirth;
-    private String major;
+    @ManyToOne
+    @JoinColumn(name = "major_id")
+    private Major major;
     private Double cgpa;
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "major = " + major + ", " +
-                "name = " + name + ", " +
-                "eMail = " + eMail + ", " +
-                "dateOfBirth = " + dateOfBirth + ", " +
-                "cgpa = " + cgpa + ")";
-    }
 }
 
 
