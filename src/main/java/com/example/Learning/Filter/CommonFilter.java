@@ -13,9 +13,51 @@ public class CommonFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        logger.info(getClass() + " Entered");
+        logger.info(getClass().getName() + " Entered");
         chain.doFilter(request, response);
-        logger.info(getClass() + " Exit");
+        logger.info(getClass().getName() + " Exit");
     }
 
 }
+
+/*
+       ┌─────────────────────────────┐
+       │       Client Browser        │
+       └────────────┬────────────────┘
+                    │ HTTP Request
+                    ▼
+       ┌─────────────────────────────┐
+       │     Filter Chain (Optional) │
+       │ e.g., AuthFilter, Logging   │
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │     DispatcherServlet       │   ← Front Controller
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │     HandlerMapping(s)       │   ← Finds the correct controller
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │      HandlerAdapter         │   ← Calls the controller method
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │       Controller Method     │   ← Business logic executed
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │ ModelAndView / @ResponseBody│
+       |                or @RestController
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │ ViewResolver / Json or xml  │   ← Resolve view or serialize response
+       └────────────┬────────────────┘
+                    ▼
+       ┌─────────────────────────────┐
+       │     HTTP Response sent      │
+       └─────────────────────────────┘
+
+ */

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/student")         //http://localhost:8080/student/about
+@RequestMapping("/student")         //http://localhost:8081/student/about
 public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
@@ -51,7 +51,6 @@ public class StudentController {
             }
             student.setMajor(majorOptional.get());
         }
-
         Student updated = studentRepository.save(student);
         return ResponseEntity.ok(updated);
     }
