@@ -1,6 +1,7 @@
 package com.example.Learning;
 
 import com.example.Learning.Controller.PostController;
+import com.example.Learning.Controller.RestTemplateController;
 import com.example.Learning.Controller.StudentController;
 import com.example.Learning.Model.Major;
 import com.example.Learning.Model.Student;
@@ -36,6 +37,8 @@ public class LearningApplication implements CommandLineRunner {
 
     @Autowired
     private PostController postController;
+    @Autowired
+    private RestTemplateController restTemplateController;
 
     @Override
     public void run(String... args) {
@@ -51,7 +54,11 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("All users -> {}", repository.findAll());
 
-        System.out.println(postController.getPostById(1L));
+        LOGGER.info("FeignClient -> {}",postController.getPostById(1L));
+
+        LOGGER.info("RestTemplate -> {}",restTemplateController.getPostById(2L));
+
+
 
     }
 
