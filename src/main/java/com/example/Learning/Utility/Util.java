@@ -13,7 +13,7 @@ public class Util {
         return objectMapper.writeValueAsString(o);
     }
 
-    public HashMap<String, Object> convertValue(Object o) {
+    public HashMap<String, Object> converttoMap(Object o) {
         return objectMapper.convertValue(o, HashMap.class);
     }
 }

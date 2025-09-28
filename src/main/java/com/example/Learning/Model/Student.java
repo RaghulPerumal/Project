@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Student {
 
     public Student(@NonNull String name, String eMail) {
