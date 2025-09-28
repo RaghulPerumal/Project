@@ -1,5 +1,6 @@
 package com.example.Learning;
 
+import com.example.Learning.Controller.PostController;
 import com.example.Learning.Controller.StudentController;
 import com.example.Learning.Model.Major;
 import com.example.Learning.Model.Student;
@@ -11,12 +12,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 
+@EnableFeignClients
 @SpringBootApplication
 public class LearningApplication implements CommandLineRunner {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
@@ -30,6 +33,9 @@ public class LearningApplication implements CommandLineRunner {
 
     @Autowired
     private StudentController studentController;
+
+    @Autowired
+    private PostController postController;
 
     @Override
     public void run(String... args) {
@@ -45,8 +51,7 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("All users -> {}", repository.findAll());
 
-        System.out.println(studentController.about());
-
+        System.out.println(postController.getPostById(1L));
 
     }
 
