@@ -54,7 +54,7 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("All users -> {}", repository.findAll());
 
-        LOGGER.info("FeignClient -> {}",postController.getPostById(1L));
+        LOGGER.info("FeignClient -> {}",postController.getPostById(2L));
 
         LOGGER.info("RestTemplate -> {}",restTemplateController.getPostById(2L));
 

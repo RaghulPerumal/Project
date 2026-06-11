@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @Component
 public class CommonFilter implements Filter {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

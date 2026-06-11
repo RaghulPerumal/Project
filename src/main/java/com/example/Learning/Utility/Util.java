@@ -2,7 +2,6 @@ package com.example.Learning.Utility;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
@@ -13,7 +12,7 @@ public class Util {
         return objectMapper.writeValueAsString(o);
     }
 
-    public HashMap<String, Object> converttoMap(Object o) {
+    public HashMap<String, Object> convertToMap(Object o) {
         return objectMapper.convertValue(o, HashMap.class);
     }
 }
