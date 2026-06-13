@@ -8,7 +8,6 @@ import com.example.Learning.Repo.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -21,7 +20,7 @@ public class StudentController {
     @Autowired
     private MajorRepository majorRepository;
 
-    @GetMapping("/about")
+    @GetMapping(path = "/about")
 //    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> about() {
 //        return ResponseEntity.ok("About");
@@ -29,7 +28,7 @@ public class StudentController {
 //        return ResponseEntity.status(HttpStatus.OK).body("About");
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping(path = "/update/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody StudentDTO dto) {
         Optional<Student> optionalStudent = studentRepository.findById(id);
 

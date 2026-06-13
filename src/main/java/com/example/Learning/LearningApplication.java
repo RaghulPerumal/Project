@@ -45,14 +45,15 @@ public class LearningApplication implements CommandLineRunner {
                 LocalDate.of(2000, 1, 1), new Major(3L, "new major", 4, "desc"), 5.5)));
 
         repository.deleteById(2L);
+        LOGGER.info("Student 2 deleted");
 
         LOGGER.info("All users -> {}", repository.findAll());
 
-        LOGGER.info("FeignClient -> {}",postController.getPostById(2L));
+        LOGGER.info("FeignClient -> {}", postController.getPostById(2L));
 
-        LOGGER.info("RestTemplate -> {}",restTemplateController.getPostById(2L));
+        LOGGER.info("RestTemplate -> {}", restTemplateController.getPostById(2L));
 
-        LOGGER.info("RestClient -> {}",restClientController.getPostById(3L));
+        LOGGER.info("RestClient -> {}", restClientController.getPostById(3L));
     }
 
 //	@Bean

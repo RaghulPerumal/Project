@@ -21,7 +21,7 @@ public class RestTemplateController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public PostDTO getPostById(@PathVariable Long id) {
         String url = "https://jsonplaceholder.typicode.com/posts/" + id;
         return restTemplate.getForObject(url, PostDTO.class);
