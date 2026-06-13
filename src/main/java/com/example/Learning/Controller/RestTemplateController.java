@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restPosts")
+@RequestMapping("/restTemplatePosts")
 public class RestTemplateController {
     private final RestTemplate restTemplate;
 
@@ -30,7 +30,8 @@ public class RestTemplateController {
     @GetMapping
     public List<PostDTO> getAllPosts() {
         String url = "https://jsonplaceholder.typicode.com/posts";
-        return restTemplate.exchange(url, HttpMethod.GET,null,new ParameterizedTypeReference<List<PostDTO>>() {}).getBody();
+        return restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<PostDTO>>() {
+        }).getBody();
     }
 
 }

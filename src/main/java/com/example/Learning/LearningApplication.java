@@ -1,24 +1,20 @@
 package com.example.Learning;
 
 import com.example.Learning.Controller.PostController;
+import com.example.Learning.Controller.RestClientController;
 import com.example.Learning.Controller.RestTemplateController;
-import com.example.Learning.Controller.StudentController;
 import com.example.Learning.Model.Major;
 import com.example.Learning.Model.Student;
 import com.example.Learning.Repo.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 @EnableFeignClients
 @SpringBootApplication
@@ -31,23 +27,21 @@ public class LearningApplication implements CommandLineRunner {
 
     @Autowired
     private StudentRepository repository;
-
-    @Autowired
-    private StudentController studentController;
-
     @Autowired
     private PostController postController;
     @Autowired
     private RestTemplateController restTemplateController;
+    @Autowired
+    private RestClientController restClientController;
 
     @Override
     public void run(String... args) {
 
-        LOGGER.info("Student id 10001 -> {}", repository.findById(10001L));
+        LOGGER.info("Student id 2 -> {}", repository.findById(2L).orElseGet(() -> new Student("Default", "Default Email")));
 
-        LOGGER.info("Inserting -> {}", repository.save(new Student("John", "A1234657")));
+        LOGGER.info("Inserting new Student-> {}", repository.save(new Student("John", "A1234657")));
 
-        LOGGER.info("Update 10003 -> {}", repository.save(new Student(1L, "Victoria", "victoria.watson@example.com",
+        LOGGER.info("Update Student 3 -> {}", repository.save(new Student(3L, "Victoria", "victoria.watson@example.com",
                 LocalDate.of(2000, 1, 1), new Major(3L, "new major", 4, "desc"), 5.5)));
 
         repository.deleteById(2L);
@@ -58,8 +52,7 @@ public class LearningApplication implements CommandLineRunner {
 
         LOGGER.info("RestTemplate -> {}",restTemplateController.getPostById(2L));
 
-
-
+        LOGGER.info("RestClient -> {}",restClientController.getPostById(3L));
     }
 
 //	@Bean
