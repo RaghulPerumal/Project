@@ -28,6 +28,13 @@ public class StudentController {
 //        return ResponseEntity.status(HttpStatus.OK).body("About");
     }
 
+    @GetMapping(path = "{id}")
+    public ResponseEntity<Student> findById(@PathVariable Long id) {
+        Optional<Student> student = studentRepository.findById(id);
+        return student.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @PostMapping(path = "/update/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody StudentDTO dto) {
         Optional<Student> optionalStudent = studentRepository.findById(id);
